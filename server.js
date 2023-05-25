@@ -5,9 +5,17 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const errorHandler = require("./middleware/error");
+
+const port = process.env.PORT || 4000;
 
 // initialize app
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ extended: true }));
 
 // connect to our database
 mongoose
@@ -24,11 +32,9 @@ mongoose
 
 mongoose.set("strictQuery", false);
 
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-const port = process.env.PORT || 4000;
+// ROUTES
+app.use("./api/auth", require("./routes/auth"));
+app.use(errorHandler)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
