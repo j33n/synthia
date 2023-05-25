@@ -1,2 +1,3 @@
 # Synthia
- A React + GPT-3 app
+
+A React + GPT-3 app
