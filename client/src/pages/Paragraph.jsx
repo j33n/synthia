@@ -15,11 +15,11 @@ import {
 import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../utils";
 
-const Summary = () => {
+const Paragraph = () => {
   const theme = useTheme();
   const isNotMobile = useMediaQuery("min-width: 1000px");
   const [text, setText] = useState("");
-  const [summary, setSummary] = useState("");
+  const [paragraph, setParagraph] = useState("");
   const [error, setError] = useState("");
 
   const config = {
@@ -28,16 +28,16 @@ const Summary = () => {
     },
   };
 
-  const handleSummary = async (e) => {
+  const handleParagraph = async (e) => {
     e.preventDefault();
 
     try {
       const { data } = await axios.post(
-        `${API_BASE_URL}/api/openai/summary`,
+        `${API_BASE_URL}/api/openai/paragraph`,
         { text },
         config
       );
-      setSummary(data);
+      setParagraph(data);
     } catch (err) {
       console.log(err);
       if (err.response.data.error) {
@@ -68,10 +68,10 @@ const Summary = () => {
       </Collapse>
       <form
         style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-        onSubmit={handleSummary}
+        onSubmit={handleParagraph}
       >
         <Typography fontWeight="500" variant="h5" mb="1rem">
-          Text Summarizer
+          Paragraph Generator
         </Typography>
 
         <Stack direction="row" spacing={1}>
@@ -80,7 +80,7 @@ const Summary = () => {
               required
               fullWidth
               multiline={true}
-              placeholder="Enter the text to summarize here"
+              placeholder="Enter any topic you want to know more about!!"
               type="text"
               onChange={(e) => setText(e.target.value)}
               value={text}
@@ -92,7 +92,7 @@ const Summary = () => {
             type="submit"
             sx={{ color: "white" }}
           >
-            Summarize
+            Generate
           </Button>
         </Stack>
       </form>
@@ -108,8 +108,8 @@ const Summary = () => {
           bgcolor: "background.default",
         }}
       >
-        {summary ? (
-          <Typography>{summary}</Typography>
+        {paragraph ? (
+          <Typography>{paragraph}</Typography>
         ) : (
           <Typography
             variant="h3"
@@ -120,7 +120,7 @@ const Summary = () => {
               lineHeight: "450px",
             }}
           >
-            Your summary should appear here!
+            Your paragraph should appear here!
           </Typography>
         )}
       </Card>
@@ -131,4 +131,4 @@ const Summary = () => {
   );
 };
 
-export default Summary;
+export default Paragraph;

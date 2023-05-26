@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Summary from "./pages/Summary";
+import Paragraph from "./pages/Paragraph";
 
 import Navbar from "./components/Navbar";
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/summary" element={<Summary />} />
+          <Route exact path="/paragraph" element={<Paragraph />} />
         </Routes>
       </ThemeProvider>
     </div>
