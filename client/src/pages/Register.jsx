@@ -10,7 +10,7 @@ import {
   Collapse,
   Alert,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../utils";
 
 const Register = () => {
@@ -32,13 +32,12 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios
-        .post(
-          `${API_BASE_URL}/api/auth/register`,
-          { username, email, password },
-          config
-        )
-        .then(navigate("/login"));
+      await axios.post(
+        `${API_BASE_URL}/api/auth/register`,
+        { username, email, password },
+        config
+      );
+      navigate("/login");
     } catch (err) {
       console.log(err);
       if (err.response.data.error) {
@@ -99,6 +98,9 @@ const Register = () => {
           Sign Up
         </Button>
       </form>
+      <Typography mt="1rem">
+        Already have an account? <Link to="/login">Log In</Link>
+      </Typography>
     </Box>
   );
 };

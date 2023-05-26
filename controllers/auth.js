@@ -35,7 +35,7 @@ exports.login = async (req, res, next) => {
   }
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("password");
 
     // check user already exists
     if (!user) {
