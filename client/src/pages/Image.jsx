@@ -109,7 +109,9 @@ const Image = () => {
         }}
       >
         {image ? (
-          <img src={image} alt="generaed-image" />
+          <Box sx={{ display: "flex", alignItems: "center", my: "5" }}>
+            <img src={image} alt="generated-image" />
+          </Box>
         ) : (
           <Typography
             variant="h3"

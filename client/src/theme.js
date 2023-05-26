@@ -33,6 +33,7 @@ export const colorTokens = {
 export const themeSettings = (mode) => {
   return {
     palette: {
+      mode: mode || "light",
       primary: {
         dark: colorTokens.primary[700],
         main: colorTokens.primary[500],
@@ -49,6 +50,10 @@ export const themeSettings = (mode) => {
         default: colorTokens.grey[10],
         alt: colorTokens.grey[0],
       },
+    },
+    text: {
+      primary: "#fff",
+      secondary: colorTokens.grey[500],
     },
     typography: {
       fontSize: 12,
