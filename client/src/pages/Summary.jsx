@@ -74,6 +74,7 @@ const Summary = () => {
         </Typography>
         <TextField
           required
+          multiline={true}
           placeholder="Enter the text to summarize here"
           type="text"
           onChange={(e) => setText(e.target.value)}
@@ -95,9 +96,21 @@ const Summary = () => {
           bgcolor: "background.default",
         }}
       >
-        <Typography>
-          {summary ? summary : "Summary will appear here!"}
-        </Typography>
+        {summary ? (
+          <Typography>{summary}</Typography>
+        ) : (
+          <Typography
+            variant="h3"
+            color="neutral.main"
+            sx={{
+              textAlign: "center",
+              verticalAlign: "middle",
+              lineHeight: "450px",
+            }}
+          >
+            Your summary should appear here!
+          </Typography>
+        )}
       </Card>
       <Typography mt="1rem">
         Not the tool you&apos;re looking for <Link to="/">Go Back</Link>
