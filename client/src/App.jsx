@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Summary from "./pages/Summary";
 import Paragraph from "./pages/Paragraph";
+import Chatbot from "./pages/Chatbot";
 
 import Navbar from "./components/Navbar";
 
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/summary" element={<Summary />} />
           <Route exact path="/paragraph" element={<Paragraph />} />
+          <Route exact path="/chatbot" element={<Chatbot />} />
         </Routes>
       </ThemeProvider>
     </div>

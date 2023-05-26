@@ -1,7 +1,8 @@
 import { DescriptionRounded } from "@mui/icons-material";
 import ViewHeadlineRoundedIcon from "@mui/icons-material/ViewHeadlineRounded";
+import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
 import { Box, Card, Stack, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -63,6 +64,33 @@ const Home = () => {
             </Typography>
             <Typography variant="h6">
               Generate a paragraph about any topic
+            </Typography>
+          </Stack>
+        </Card>
+        <Card
+          onClick={() => navigate("/chatbot")}
+          sx={{
+            boxShadow: 2,
+            borderRadius: 5,
+            height: 190,
+            width: 280,
+            cursor: "pointer",
+            "&:hover": {
+              border: 2,
+              boxShadow: 0,
+              borderColor: "primary.dark",
+            },
+          }}
+        >
+          <ChatRoundedIcon
+            sx={{ fontSize: 80, color: "primary.main", mt: 2, ml: 2 }}
+          />
+          <Stack p={3} pt={0}>
+            <Typography fontWeight="bold" variant="h5">
+              Chatbot
+            </Typography>
+            <Typography variant="h6">
+              Gain insights from our virtual assistant!
             </Typography>
           </Stack>
         </Card>
