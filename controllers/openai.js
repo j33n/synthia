@@ -11,7 +11,8 @@ exports.summarize = async (req, res) => {
   const { text } = req.body;
   try {
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      // model: "text-davinci-003"
+      model: "gpt-3.5-turbo",
       prompt: `Summarize the following text: \n${text}`,
       temperature: 0.5,
       max_tokens: 500,
@@ -32,7 +33,8 @@ exports.paragraph = async (req, res) => {
   const { text } = req.body;
   try {
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      // model: "text-davinci-003"
+      model: "gpt-3.5-turbo",
       prompt: `Write a detailed paragraph about: \n${text}`,
       temperature: 0.5,
       max_tokens: 500,
@@ -53,7 +55,8 @@ exports.chatbot = async (req, res) => {
   const { text } = req.body;
   try {
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      // model: "text-davinci-003"
+      model: "gpt-3.5-turbo",
       // train the ai on answering as a virtual assistant
       prompt: `Answer questions like a virtual assistant would.
       User: Hello there!
@@ -70,6 +73,27 @@ exports.chatbot = async (req, res) => {
       : \n${text}`,
       temperature: 0.7,
       max_tokens: 300,
+    });
+
+    if (response.data) {
+      if (response.data.choices[0].text) {
+        return res.status(200).json(response.data.choices[0].text);
+      }
+    }
+  } catch (err) {
+    return res.status(404).json({ message: err.message });
+  }
+};
+
+exports.code = async (req, res) => {
+  const { text } = req.body;
+  try {
+    const response = await openai.createCompletion({
+      // // model: "code-davinci-002"
+      model: "gpt-3.5-turbo",
+      prompt: `Generate code from the following instructions: \n${text}`,
+      temperature: 0.25,
+      max_tokens: 400,
     });
 
     if (response.data) {

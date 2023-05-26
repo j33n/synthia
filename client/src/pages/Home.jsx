@@ -1,6 +1,7 @@
 import { DescriptionRounded } from "@mui/icons-material";
 import ViewHeadlineRoundedIcon from "@mui/icons-material/ViewHeadlineRounded";
 import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
+import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
 import { Box, Card, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -95,6 +96,33 @@ const Home = () => {
           </Stack>
         </Card>
       </Stack>
+      <Typography fontWeight="bold" variant="h4" mb={2} mt={4}>
+        Code Generation
+      </Typography>
+      <Card
+        onClick={() => navigate("/code")}
+        sx={{
+          boxShadow: 2,
+          borderRadius: 5,
+          height: 190,
+          width: 280,
+          cursor: "pointer",
+          "&:hover": {
+            border: 2,
+            boxShadow: 0,
+            borderColor: "primary.dark",
+          },
+        }}
+      >
+        <CodeRoundedIcon
+          sx={{ fontSize: 80, color: "primary.main", mt: 2, ml: 2 }}
+        />
+        <Stack p={3} pt={0}>
+          <Typography fontWeight="bold" variant="h5">
+            Translate natural language to code
+          </Typography>
+        </Stack>
+      </Card>
     </Box>
   );
 };

@@ -15,7 +15,7 @@ import {
 import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../utils";
 
-const Chatbot = () => {
+const Code = () => {
   const theme = useTheme();
   const isNotMobile = useMediaQuery("min-width: 1000px");
   const [text, setText] = useState("");
@@ -28,12 +28,12 @@ const Chatbot = () => {
     },
   };
 
-  const handleResponse = async (e) => {
+  const handleCodeResponse = async (e) => {
     e.preventDefault();
 
     try {
       const { data } = await axios.post(
-        `${API_BASE_URL}/api/openai/chatbot`,
+        `${API_BASE_URL}/api/openai/code`,
         { text },
         config
       );
@@ -68,10 +68,10 @@ const Chatbot = () => {
       </Collapse>
       <form
         style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-        onSubmit={handleResponse}
+        onSubmit={handleCodeResponse}
       >
         <Typography fontWeight="500" variant="h5" mb="1rem">
-          Chatbot
+          Code Generator
         </Typography>
 
         <Stack direction="row" spacing={1}>
@@ -80,7 +80,7 @@ const Chatbot = () => {
               required
               fullWidth
               multiline={true}
-              placeholder="Enter question!!"
+              placeholder="Enter a set of instruction to generate code!!"
               type="text"
               onChange={(e) => setText(e.target.value)}
               value={text}
@@ -92,7 +92,7 @@ const Chatbot = () => {
             type="submit"
             sx={{ color: "white" }}
           >
-            Ask Bot
+            Generate Code
           </Button>
         </Stack>
       </form>
@@ -104,23 +104,14 @@ const Chatbot = () => {
           boxShadow: 0,
           borderColor: "neutral.medium",
           borderRadius: 2,
-          height: "300px",
+          height: "500px",
           bgcolor: "background.default",
         }}
       >
         {response ? (
-          <Typography
-            variant="h3"
-            fontWeight="bold"
-            color="primary.dark"
-            sx={{
-              textAlign: "center",
-              verticalAlign: "middle",
-              lineHeight: "270px",
-            }}
-          >
-            {response}
-          </Typography>
+          <pre>
+            <Typography variant="h3">{response}</Typography>
+          </pre>
         ) : (
           <Typography
             variant="h3"
@@ -131,7 +122,7 @@ const Chatbot = () => {
               lineHeight: "450px",
             }}
           >
-            Your response should appear here!
+            Your code response should appear here!
           </Typography>
         )}
       </Card>
@@ -142,4 +133,4 @@ const Chatbot = () => {
   );
 };
 
-export default Chatbot;
+export default Code;

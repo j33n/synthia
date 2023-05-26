@@ -33,7 +33,7 @@ const Navbar = () => {
       p="0.5rem 6%"
       backgroundColor={theme.palette.background.alt}
       textAlign="center"
-      sx={{ boxShadow: 3, mb: 2, display: "flex", alignItems: "center" }}
+      sx={{ boxShadow: 3, mb: 2, display: "flex", alignItems: "center", position: "absolute", top: "0" }}
     >
       <Link to="/">
         <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
