@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div>
-      <p>Hello</p>
+      <Link to="/summary">Summary</Link>
     </div>
   );
 };

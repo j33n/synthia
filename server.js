@@ -34,10 +34,11 @@ mongoose.set("strictQuery", false);
 
 // ROUTES
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/openai", require("./routes/openai"));
 app.get("/api", (req, res) => {
-  res.send("hello world");
+  res.send("Welcome, to Synthia API");
 });
-app.use(errorHandler)
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
