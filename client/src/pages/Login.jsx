@@ -16,7 +16,7 @@ import { API_BASE_URL } from "../utils";
 const Login = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const isNotMobile = useMediaQuery("min-width: 1000px");
+  const isNotMobile = useMediaQuery("(min-width: 1000px)");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
