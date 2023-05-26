@@ -33,7 +33,10 @@ mongoose
 mongoose.set("strictQuery", false);
 
 // ROUTES
-app.use("./api/auth", require("./routes/auth"));
+app.use("/api/auth", require("./routes/auth"));
+app.get("/api", (req, res) => {
+  res.send("hello world");
+});
 app.use(errorHandler)
 
 app.listen(port, () => {

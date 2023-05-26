@@ -11,6 +11,7 @@ import {
   Alert,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../utils";
 
 const Register = () => {
   const theme = useTheme();
@@ -32,7 +33,11 @@ const Register = () => {
 
     try {
       await axios
-        .post("api/auth/register", { username, email, password }, config)
+        .post(
+          `${API_BASE_URL}/api/auth/register`,
+          { username, email, password },
+          config
+        )
         .then(navigate("/login"));
     } catch (err) {
       console.log(err);
