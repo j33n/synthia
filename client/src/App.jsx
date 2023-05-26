@@ -14,6 +14,7 @@ import Chatbot from "./pages/Chatbot";
 
 import Navbar from "./components/Navbar";
 import Code from "./pages/Code";
+import Image from "./pages/Image";
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/paragraph" element={<Paragraph />} />
           <Route exact path="/chatbot" element={<Chatbot />} />
           <Route exact path="/code" element={<Code />} />
+          <Route exact path="/image" element={<Image />} />
         </Routes>
       </ThemeProvider>
     </div>

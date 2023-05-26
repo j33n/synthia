@@ -105,3 +105,23 @@ exports.code = async (req, res) => {
     return res.status(404).json({ message: err.message });
   }
 };
+
+// generate image from instructions
+exports.image = async (req, res) => {
+  const { text } = req.body;
+  try {
+    const response = await openai.createImage({
+      prompt: `Generate an image from the following instructions: \n${text}`,
+      n: 1,
+      size: "512x512",
+    });
+
+    if (response.data) {
+      if (response.data.choices[0].url) {
+        return res.status(200).json(response.data.data[0].url);
+      }
+    }
+  } catch (err) {
+    return res.status(404).json({ message: err.message });
+  }
+};

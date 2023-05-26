@@ -15,11 +15,11 @@ import {
 import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../utils";
 
-const Code = () => {
+const Image = () => {
   const theme = useTheme();
   const isNotMobile = useMediaQuery("(min-width: 1000px)");
   const [text, setText] = useState("");
-  const [response, setResponse] = useState("");
+  const [image, setImage] = useState("");
   const [error, setError] = useState("");
 
   const config = {
@@ -28,16 +28,16 @@ const Code = () => {
     },
   };
 
-  const handleCodeResponse = async (e) => {
+  const handleImage = async (e) => {
     e.preventDefault();
 
     try {
       const { data } = await axios.post(
-        `${API_BASE_URL}/api/openai/code`,
+        `${API_BASE_URL}/api/openai/image`,
         { text },
         config
       );
-      setResponse(data);
+      setImage(data);
     } catch (err) {
       console.log(err);
       if (err.response.data.error) {
@@ -68,10 +68,10 @@ const Code = () => {
       </Collapse>
       <form
         style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-        onSubmit={handleCodeResponse}
+        onSubmit={handleImage}
       >
         <Typography fontWeight="500" variant="h5" mb="1rem">
-          Code Generator
+          Image Generator
         </Typography>
 
         <Stack direction="row" spacing={1}>
@@ -80,7 +80,7 @@ const Code = () => {
               required
               fullWidth
               multiline={true}
-              placeholder="Enter a set of instruction to generate code!!"
+              placeholder="Enter instructions to generate an image!"
               type="text"
               onChange={(e) => setText(e.target.value)}
               value={text}
@@ -92,7 +92,7 @@ const Code = () => {
             type="submit"
             sx={{ color: "white" }}
           >
-            Generate Code
+            Generate Image
           </Button>
         </Stack>
       </form>
@@ -108,10 +108,8 @@ const Code = () => {
           bgcolor: "background.default",
         }}
       >
-        {response ? (
-          <pre>
-            <Typography variant="h3">{response}</Typography>
-          </pre>
+        {image ? (
+          <img src={image} alt="generaed-image" />
         ) : (
           <Typography
             variant="h3"
@@ -122,7 +120,7 @@ const Code = () => {
               lineHeight: "450px",
             }}
           >
-            Your code response should appear here!
+            Your image should appear here!
           </Typography>
         )}
       </Card>
@@ -133,4 +131,4 @@ const Code = () => {
   );
 };
 
-export default Code;
+export default Image;

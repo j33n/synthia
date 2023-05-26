@@ -17,7 +17,7 @@ import { API_BASE_URL } from "../utils";
 
 const Chatbot = () => {
   const theme = useTheme();
-  const isNotMobile = useMediaQuery("min-width: 1000px");
+  const isNotMobile = useMediaQuery("(min-width: 1000px)");
   const [text, setText] = useState("");
   const [response, setResponse] = useState("");
   const [error, setError] = useState("");

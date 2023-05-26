@@ -17,7 +17,7 @@ import { API_BASE_URL } from "../utils";
 
 const Paragraph = () => {
   const theme = useTheme();
-  const isNotMobile = useMediaQuery("min-width: 1000px");
+  const isNotMobile = useMediaQuery("(min-width: 1000px)");
   const [text, setText] = useState("");
   const [paragraph, setParagraph] = useState("");
   const [error, setError] = useState("");
